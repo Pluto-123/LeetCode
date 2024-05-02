@@ -14,19 +14,21 @@ func letterCombinations(digits string) []string {
 		'9': {'w', 'x', 'y', 'z'},
 	} // 2 ==> [a,b,c]
 	trace := make([]byte, 0) // 把trace设置成切片比较好修改
-	backTrace(digits, mp, &trace, &res)
+	checked := map[byte]bool{}
+	backTrace(digits, mp, &trace, &res, checked)
 	return res
 }
 
-func backTrace(digits string, mp map[byte][]byte, trace *[]byte, res *[]string) {
-	if len(digits) == len(*trace) {
-		*res = append(*res, string(*trace))
+func backTrace(digits string, mp map[byte][]byte, trace *[]byte, res *[]string, checked map[byte]bool) {
+
+	if len(*trace) == len(digits) {
+		tmp := make([]byte, len(*trace))
+		copy(tmp, *trace)
+		*res = append(*res, string(tmp))
 		return
 	}
 	for i := 0; i < len(digits); i++ {
-		//if inside(trace, digits[i], mp) {
-		//	continue
-		//}
+		// 把东西取出来
 
 	}
 }
