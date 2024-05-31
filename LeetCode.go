@@ -1,31 +1,17 @@
 package main
 
-func flatten(root *TreeNode) {
-	nums := make([]int, 0)
-	preTravel(root, &nums)
-	ans := &TreeNode{}
-	ansi := ans
-	for i := 0; i < len(nums); i++ {
-		newNode := &TreeNode{
-			Val:   nums[i],
-			Left:  nil,
-			Right: nil,
-		}
-		ansi.Right = newNode
-		ansi = ansi.Right
-	}
-	root = ans.Right
-	//if root == nil {
-	//	root.Left = nil
-	//
-	//}
+type User struct {
+	name string `json:name-field`
+	age  int
 }
 
-func preTravel(root *TreeNode, nums *[]int) {
-	if root == nil {
-		return
-	}
-	*nums = append(*nums, root.Val)
-	preTravel(root.Left, nums)
-	preTravel(root.Right, nums)
+func main() {
+	//user := &User{
+	//	name: "fak er",
+	//	age:  27,
+	//}
+	//field, ok := reflect.TypeOf(user).Elem().FieldByName("name")
+	//if !ok {
+	//	panic("")
+	//}
 }

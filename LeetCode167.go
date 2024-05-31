@@ -1,6 +1,6 @@
 package main
 
-func twoSum(numbers []int, target int) []int {
+func twoSum2(numbers []int, target int) []int {
 	low := 0
 	high := len(numbers) - 1
 	for low <= high {
