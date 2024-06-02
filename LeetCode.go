@@ -1,17 +1,27 @@
 package main
 
-type User struct {
-	name string `json:name-field`
-	age  int
-}
+import (
+	"fmt"
+	"sync"
+)
 
 func main() {
-	//user := &User{
-	//	name: "fak er",
-	//	age:  27,
-	//}
-	//field, ok := reflect.TypeOf(user).Elem().FieldByName("name")
-	//if !ok {
-	//	panic("")
-	//}
+
+	count := 10
+	sum := 100
+
+	wg := sync.WaitGroup{}
+	c := make(chan struct{}, count)
+	defer close(c)
+
+	for i := 0; i < sum; i++ {
+		wg.Add(1)
+		c <- struct{}{}
+		go func(j int) {
+			defer wg.Done()
+			fmt.Println(j)
+			<-c
+		}(i)
+	}
+	wg.Wait()
 }

@@ -2,7 +2,7 @@ package main
 
 // 第一次从零推导出来的dp+贪心的状态转移方程
 // 用最少的步数得到最多的利润
-func maxProfit(prices []int) int {
+func maxProfit2(prices []int) int {
 
 	if len(prices) < 2 {
 		return 0
