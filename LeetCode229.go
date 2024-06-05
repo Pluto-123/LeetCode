@@ -1,6 +1,6 @@
 package main
 
-func majorityElement(nums []int) []int {
+func majorityElement2(nums []int) []int {
 	times := len(nums) / 3
 
 	res := make([]int, 0)

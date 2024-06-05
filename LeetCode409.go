@@ -1,6 +1,6 @@
 package main
 
-func longestPalindrome(s string) int {
+func longestPalindrome2(s string) int {
 	mp := map[byte]int{}
 	// 初始化map
 	for i := 0; i < len(s); i++ {
