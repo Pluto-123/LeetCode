@@ -1,32 +1,36 @@
 package main
 
 func productExceptSelf(nums []int) []int {
-	answer := make([]int, len(nums))
-	// 维护一个前缀乘积的slice
+	res := make([]int, len(nums))
 	pre := make([]int, len(nums))
-	pre[0] = nums[0]
-	for i := 1; i < len(nums); i++ {
-		pre[i] = pre[i-1] * nums[i]
-	}
-	// 维护一个后缀乘积的slice
 	post := make([]int, len(nums))
-	post[len(post)-1] = nums[len(nums)-1]
-	for i := len(nums) - 2; i >= 0; i-- {
-		post[i] = post[i+1] * nums[i]
-	}
-
-	// 遍历
 	for i := 0; i < len(nums); i++ {
 		if i == 0 {
-			answer[i] = post[i+1]
+			pre[i] = nums[i]
 			continue
 		}
-		if i == len(nums)-1 {
-			answer[i] = pre[i-1]
-			continue
-		}
-		answer[i] = pre[i-1] * post[i+1]
-
+		pre[i] = pre[i-1] * nums[i]
 	}
-	return answer
+
+	for i := len(post) - 1; i >= 0; i-- {
+		if i == len(post)-1 {
+			post[i] = nums[i]
+			continue
+		}
+		post[i] = nums[i] * post[i+1]
+	}
+
+	for i := 0; i < len(res); i++ {
+		if i == 0 {
+			res[i] = post[i+1]
+			continue
+		}
+		if i == len(res)-1 {
+			res[i] = pre[i-1]
+			continue
+		}
+		res[i] = post[i+1] * pre[i-1]
+	}
+
+	return res
 }

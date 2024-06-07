@@ -1,7 +1,7 @@
 package main
 
 // 轮转数组
-func rotate(nums []int, k int) {
+func rotate1(nums []int, k int) {
 	//for i := 0; i < k; i++ {
 	//	r189(nums)
 	//}
