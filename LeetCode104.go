@@ -8,8 +8,14 @@ package main
  *     Right *TreeNode
  * }
  */
+// 返回root的深度
 func maxDepth(root *TreeNode) int {
-	ans := 0
+	if root == nil {
+		return 0
+	}
+	if root.Left == nil && root.Right == nil {
+		return 1
+	}
+	return max(maxDepth(root.Left), maxDepth(root.Right)) + 1
 
-	return ans
 }
